@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Fil Rouge — Back-office</title>
+<link rel="icon" href="logo-fil-rouge-rouge.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0a0a0b;--panel:#121214;--line:#26262b;--paper:#f2f1ef;--muted:#8b8b92;--red:#ce2b37}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--paper);font:400 14px/1.5 Inter,system-ui,sans-serif}
+a{color:var(--red)}
+header{
+  position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:12px 20px;background:rgba(10,10,11,.95);border-bottom:1px solid var(--line);
+  backdrop-filter:blur(8px);
+}
+header img{height:22px}
+header .sp{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+button,.btn{
+  font:inherit;color:var(--paper);background:#1b1b1f;border:1px solid var(--line);
+  border-radius:6px;padding:8px 13px;cursor:pointer;transition:.2s
+}
+button:hover{border-color:#44444c}
+.primary{background:var(--red);border-color:var(--red);color:#fff;font-weight:500}
+.primary:hover{filter:brightness(1.1)}
+.ghost{background:none}
+.mini{padding:3px 8px;font-size:12px;line-height:1.3}
+main{max-width:1180px;margin:0 auto;padding:22px 20px 120px}
+h1{font-size:18px;font-weight:500;margin:0}
+h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:34px 0 12px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}
+label{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 5px}
+input,textarea{
+  width:100%;font:inherit;color:var(--paper);background:#1b1b1f;border:1px solid var(--line);
+  border-radius:6px;padding:8px 10px
+}
+input:focus,textarea:focus{outline:none;border-color:var(--red)}
+textarea{resize:vertical;min-height:62px}
+.row{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-bottom:10px}
+.cat{border:1px solid var(--line);border-radius:10px;margin-bottom:12px;overflow:hidden;background:var(--panel)}
+.cat>.hd{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#161619;flex-wrap:wrap}
+.cat>.hd .nm{font-weight:500;flex:1 1 180px}
+.cat .body{padding:14px;border-top:1px solid var(--line);display:none}
+.cat.open .body{display:block}
+.sub{border:1px solid var(--line);border-radius:8px;margin:10px 0;background:#0f0f12}
+.sub>.hd{display:flex;align-items:center;gap:8px;padding:9px 12px;flex-wrap:wrap}
+.sub>.hd .nm{flex:1 1 160px;color:#cfcfd4;font-size:13px}
+.films{padding:0 12px 12px}
+.film{
+  display:grid;gap:8px;align-items:center;padding:8px 0;border-top:1px solid #1d1d22;
+  grid-template-columns:1.6fr 1fr .9fr .5fr auto;
+}
+.film:first-child{border-top:0}
+.film .acts{display:flex;gap:4px}
+.tag{font-size:11px;color:var(--muted);letter-spacing:.08em}
+.hint{font-size:12px;color:var(--muted);line-height:1.6}
+.bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  padding:12px 20px;background:rgba(10,10,11,.96);border-top:1px solid var(--line)
+}
+.bar .st{font-size:12px;color:var(--muted);margin-left:auto}
+.gate{max-width:340px;margin:16vh auto;text-align:center}
+.gate input{text-align:center;margin:14px 0}
+@media(max-width:760px){ .film{grid-template-columns:1fr 1fr;} }
+</style>
+</head>
+<body>
+
+<div id="gate" class="gate" hidden>
+  <img src="logo-fil-rouge-rouge.svg" alt="Fil Rouge" style="height:40px;margin:0 auto 10px">
+  <p class="hint">Back-office</p>
+  <input id="pw" type="password" placeholder="Code d'accès" autocomplete="off">
+  <button class="primary" id="go" style="width:100%">Entrer</button>
+</div>
+
+<div id="app" hidden>
+<header>
+  <img src="logo-fil-rouge-blanc.svg" alt="Fil Rouge">
+  <h1>Back-office</h1>
+  <div class="sp">
+    <button class="ghost" id="imp">Importer un data.json</button>
+    <button class="ghost" id="prev">Aperçu sur le site</button>
+    <button class="primary" id="dl">Télécharger data.json</button>
+  </div>
+</header>
+
+<main>
+  <h2>Le site</h2>
+  <div class="panel">
+    <div class="row">
+      <div><label>Nom</label><input id="s_name"></div>
+      <div><label>Showreel (lien ou ID Vimeo)</label><input id="s_reel" placeholder="532600097"></div>
+    </div>
+    <div class="row">
+      <div><label>Signature</label><input id="s_base"></div>
+    </div>
+    <div class="row">
+      <div><label>Texte d'intro</label><textarea id="s_intro"></textarea></div>
+    </div>
+    <div class="row">
+      <div><label>E-mail</label><input id="c_email"></div>
+      <div><label>Téléphone</label><input id="c_tel"></div>
+      <div><label>Vimeo</label><input id="c_vimeo"></div>
+      <div><label>Lien de rendez-vous</label><input id="c_rdv" placeholder="https://cal.com/..."></div>
+    </div>
+  </div>
+
+  <h2>Catégories</h2>
+  <div id="cats"></div>
+  <button id="addCat">+ Ajouter une catégorie</button>
+
+  <p class="hint" style="margin-top:28px">
+    « Aperçu sur le site » enregistre vos modifications dans ce navigateur uniquement, pour les voir
+    tout de suite sur la page d'accueil. Pour les mettre en ligne pour tout le monde :
+    « Télécharger data.json », puis remplacez le fichier <code>data.json</code> sur votre hébergement.
+  </p>
+</main>
+
+<div class="bar">
+  <button class="ghost" id="reset">Repartir du fichier en ligne</button>
+  <span class="st" id="st"></span>
+</div>
+</div>
+
+<input type="file" id="file" accept="application/json,.json" hidden>
+
+<script>
+(function(){
+"use strict";
+/* Code d'accès : laissez "" pour désactiver. Protection d'affichage seulement —
+   pour une vraie protection, verrouillez ce fichier côté hébergeur (.htaccess). */
+var CODE = "filrouge";
+
+var LS="filrouge.data.v1", D=null;
+
+/* ---- porte ---- */
+var gate=document.getElementById("gate"), app=document.getElementById("app");
+function enter(){ gate.hidden=true; app.hidden=false; start(); }
+if(!CODE || sessionStorage.getItem("fr.ok")==="1"){ enter(); }
+else{
+  gate.hidden=false;
+  var check=function(){
+    if(document.getElementById("pw").value===CODE){ sessionStorage.setItem("fr.ok","1"); enter(); }
+    else{ document.getElementById("pw").value=""; document.getElementById("pw").placeholder="Code incorrect"; }
+  };
+  document.getElementById("go").onclick=check;
+  document.getElementById("pw").onkeydown=function(e){ if(e.key==="Enter") check(); };
+}
+
+/* ---- utilitaires ---- */
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+function vid(v){ var m=String(v||"").match(/(\d{6,})/); return m?m[1]:String(v||""); }
+function slug(s){ return String(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"")
+  .replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,40)||("c"+Date.now()); }
+function say(m){ var e=document.getElementById("st"); e.textContent=m; setTimeout(function(){ if(e.textContent===m) e.textContent=""; },3500); }
+function move(arr,i,d){ var j=i+d; if(j<0||j>=arr.length) return; var t=arr[i]; arr[i]=arr[j]; arr[j]=t; }
+
+/* ---- chargement ---- */
+function start(){
+  var draft=null;
+  try{ var raw=localStorage.getItem(LS); if(raw) draft=JSON.parse(raw); }catch(e){}
+  if(draft && draft.categories){ D=draft; say("Brouillon local chargé"); render(); return; }
+  fetch("data.json",{cache:"no-store"}).then(function(r){ return r.json(); })
+    .then(function(j){ D=j; render(); })
+    .catch(function(){ D={site:{contact:{}},categories:[]}; render(); say("data.json introuvable — nouveau contenu"); });
+}
+
+/* ---- rendu ---- */
+function render(){
+  var s=D.site=D.site||{}; s.contact=s.contact||{};
+  val("s_name",s.name); val("s_reel",s.showreel); val("s_base",s.baseline); val("s_intro",s.intro);
+  val("c_email",s.contact.email); val("c_tel",s.contact.tel); val("c_vimeo",s.contact.vimeo); val("c_rdv",s.contact.rdv);
+  var h="";
+  (D.categories||[]).forEach(function(c,ci){
+    var n=0; (c.sub||[]).forEach(function(x){ n+=(x.films||[]).length; });
+    h+='<div class="cat" data-ci="'+ci+'">'+
+      '<div class="hd">'+
+        '<button class="mini" data-a="tog">▸</button>'+
+        '<span class="nm">'+esc(c.title||"(sans titre)")+'</span>'+
+        '<span class="tag">'+n+' film'+(n>1?"s":"")+' · '+(c.sub||[]).length+' sous-cat.</span>'+
+        '<button class="mini" data-a="cup">▲</button><button class="mini" data-a="cdn">▼</button>'+
+        '<button class="mini" data-a="cdel">Suppr.</button>'+
+      '</div><div class="body">'+
+        '<div class="row">'+
+          '<div><label>Titre</label><input data-f="ctitle" value="'+esc(c.title)+'"></div>'+
+          '<div><label>Identifiant (ancre)</label><input data-f="cid" value="'+esc(c.id)+'"></div>'+
+        '</div>'+
+        '<div class="row"><div><label>Phrase de présentation</label><input data-f="cnote" value="'+esc(c.note)+'"></div></div>';
+    (c.sub||[]).forEach(function(sb,si){
+      h+='<div class="sub" data-si="'+si+'">'+
+        '<div class="hd">'+
+          '<input class="nm" data-f="stitle" value="'+esc(sb.title)+'" placeholder="Sous-catégorie (vide = aucune)">'+
+          '<span class="tag">'+(sb.films||[]).length+'</span>'+
+          '<button class="mini" data-a="sup">▲</button><button class="mini" data-a="sdn">▼</button>'+
+          '<button class="mini" data-a="sdel">Suppr.</button>'+
+        '</div><div class="films">';
+      (sb.films||[]).forEach(function(f,fi){
+        h+='<div class="film" data-fi="'+fi+'">'+
+          '<input data-f="ft" value="'+esc(f.t)+'" placeholder="Titre du film">'+
+          '<input data-f="fv" value="'+esc(f.v)+'" placeholder="Lien ou ID Vimeo">'+
+          '<input data-f="fc" value="'+esc(f.c)+'" placeholder="Client">'+
+          '<input data-f="fy" value="'+esc(f.y)+'" placeholder="Année">'+
+          '<span class="acts">'+
+            '<button class="mini" data-a="fttl" title="Récupérer le titre Vimeo">⤓</button>'+
+            '<button class="mini" data-a="fup">▲</button><button class="mini" data-a="fdn">▼</button>'+
+            '<button class="mini" data-a="fdel">✕</button>'+
+          '</span>'+
+        '</div>';
+      });
+      h+='<div style="padding-top:10px"><button class="mini" data-a="fadd">+ Film</button></div>';
+      h+='</div></div>';
+    });
+    h+='<button class="mini" data-a="sadd">+ Sous-catégorie</button>';
+    h+='</div></div>';
+  });
+  document.getElementById("cats").innerHTML=h;
+}
+function val(id,v){ var e=document.getElementById(id); if(e) e.value=v==null?"":v; }
+
+/* ---- saisie ---- */
+document.addEventListener("input",function(e){
+  var t=e.target, f=t.getAttribute("data-f"); if(!f) return;
+  var catEl=t.closest(".cat"), subEl=t.closest(".sub"), filmEl=t.closest(".film");
+  if(["s_name","s_reel","s_base","s_intro","c_email","c_tel","c_vimeo","c_rdv"].indexOf(t.id)>=0) return;
+  if(!catEl) return;
+  var c=D.categories[+catEl.getAttribute("data-ci")];
+  if(f==="ctitle") c.title=t.value;
+  else if(f==="cid") c.id=t.value;
+  else if(f==="cnote") c.note=t.value;
+  else if(subEl){
+    var sb=c.sub[+subEl.getAttribute("data-si")];
+    if(f==="stitle") sb.title=t.value;
+    else if(filmEl){
+      var fl=sb.films[+filmEl.getAttribute("data-fi")];
+      if(f==="ft") fl.t=t.value;
+      if(f==="fv") fl.v=vid(t.value);
+      if(f==="fc") fl.c=t.value;
+      if(f==="fy") fl.y=t.value;
+    }
+  }
+  stash();
+});
+["s_name","s_reel","s_base","s_intro","c_email","c_tel","c_vimeo","c_rdv"].forEach(function(id){
+  document.addEventListener("input",function(e){
+    if(e.target.id!==id) return;
+    var v=e.target.value, s=D.site;
+    if(id==="s_name") s.name=v; if(id==="s_reel") s.showreel=vid(v);
+    if(id==="s_base") s.baseline=v; if(id==="s_intro") s.intro=v;
+    if(id==="c_email") s.contact.email=v; if(id==="c_tel") s.contact.tel=v;
+    if(id==="c_vimeo") s.contact.vimeo=v; if(id==="c_rdv") s.contact.rdv=v;
+    stash();
+  });
+});
+
+/* ---- actions ---- */
+document.getElementById("cats").addEventListener("click",function(e){
+  var b=e.target.closest("[data-a]"); if(!b) return;
+  var a=b.getAttribute("data-a");
+  var catEl=b.closest(".cat"), ci=+catEl.getAttribute("data-ci"), c=D.categories[ci];
+  var subEl=b.closest(".sub"), si=subEl?+subEl.getAttribute("data-si"):-1;
+  var filmEl=b.closest(".film"), fi=filmEl?+filmEl.getAttribute("data-fi"):-1;
+
+  if(a==="tog"){ catEl.classList.toggle("open"); b.textContent=catEl.classList.contains("open")?"▾":"▸"; return; }
+  if(a==="cup"){ move(D.categories,ci,-1); }
+  if(a==="cdn"){ move(D.categories,ci,1); }
+  if(a==="cdel"){ if(!confirm("Supprimer la catégorie « "+(c.title||"")+" » ?")) return; D.categories.splice(ci,1); }
+  if(a==="sadd"){ c.sub=c.sub||[]; c.sub.push({id:slug(c.title)+"-"+(c.sub.length+1),title:"",films:[]}); }
+  if(a==="sup"){ move(c.sub,si,-1); }
+  if(a==="sdn"){ move(c.sub,si,1); }
+  if(a==="sdel"){ if(!confirm("Supprimer cette sous-catégorie et ses films ?")) return; c.sub.splice(si,1); }
+  if(a==="fadd"){ c.sub[si].films=c.sub[si].films||[]; c.sub[si].films.push({t:"",v:"",c:"",y:""}); }
+  if(a==="fup"){ move(c.sub[si].films,fi,-1); }
+  if(a==="fdn"){ move(c.sub[si].films,fi,1); }
+  if(a==="fdel"){ c.sub[si].films.splice(fi,1); }
+  if(a==="fttl"){
+    var fl=c.sub[si].films[fi], id=vid(fl.v);
+    if(!id){ say("Mettez d'abord un lien Vimeo"); return; }
+    say("Récupération du titre…");
+    fetch("https://vimeo.com/api/oembed.json?url=https%3A//vimeo.com/"+id)
+      .then(function(r){ return r.json(); })
+      .then(function(j){ if(j&&j.title){ fl.t=j.title; stash(); render(); reopen(ci); say("Titre récupéré"); } })
+      .catch(function(){ say("Titre indisponible"); });
+    return;
+  }
+  stash(); render(); reopen(Math.min(ci,D.categories.length-1));
+});
+function reopen(ci){
+  var el=document.querySelector('.cat[data-ci="'+ci+'"]');
+  if(el){ el.classList.add("open"); var t=el.querySelector('[data-a="tog"]'); if(t) t.textContent="▾"; }
+}
+document.getElementById("addCat").onclick=function(){
+  D.categories=D.categories||[];
+  D.categories.push({id:"categorie-"+(D.categories.length+1),title:"Nouvelle catégorie",note:"",
+    sub:[{id:"s"+Date.now(),title:"",films:[]}]});
+  stash(); render(); reopen(D.categories.length-1);
+};
+
+/* ---- enregistrement / export ---- */
+function stash(){ try{ localStorage.setItem(LS,JSON.stringify(D)); }catch(e){} }
+document.getElementById("prev").onclick=function(){ stash(); say("Aperçu enregistré — ouvrez la page d'accueil"); };
+document.getElementById("dl").onclick=function(){
+  stash();
+  var blob=new Blob([JSON.stringify(D,null,2)],{type:"application/json"});
+  var a=document.createElement("a");
+  a.href=URL.createObjectURL(blob); a.download="data.json"; a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); },2000);
+  say("data.json téléchargé — remplacez le fichier sur l'hébergement");
+};
+document.getElementById("imp").onclick=function(){ document.getElementById("file").click(); };
+document.getElementById("file").onchange=function(e){
+  var f=e.target.files[0]; if(!f) return;
+  var r=new FileReader();
+  r.onload=function(){ try{ D=JSON.parse(r.result); stash(); render(); say("Fichier importé"); }
+    catch(err){ say("Fichier illisible"); } };
+  r.readAsText(f);
+};
+document.getElementById("reset").onclick=function(){
+  if(!confirm("Abandonner les modifications locales et recharger le fichier en ligne ?")) return;
+  try{ localStorage.removeItem(LS); }catch(e){}
+  start();
+};
+})();
+</script>
+</body>
+</html>

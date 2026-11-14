@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fil Rouge — Société de production</title>
+<meta name="description" content="Fil Rouge — société de production audiovisuelle. Films de marque, corporate, social content, création sonore. Lille · Paris · Bruxelles.">
+<meta property="og:title" content="Fil Rouge — Société de production">
+<meta property="og:description" content="Films de marque, corporate, social content, création sonore.">
+<meta property="og:type" content="website">
+<link rel="icon" href="logo-fil-rouge-rouge.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0a0b; --ink-2:#121214; --line:#232327;
+  --paper:#f2f1ef; --muted:#8b8b92; --red:#ce2b37;
+  --max:1680px; --gut:clamp(20px,4vw,64px);
+  --t:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--ink); color:var(--paper);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-weight:400; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+img,svg,iframe{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.eyebrow{
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+  font-weight:500;
+}
+
+/* ---------- top bar ---------- */
+.bar{
+  position:fixed;inset:0 0 auto 0;z-index:60;
+  display:flex;align-items:center;gap:24px;
+  padding:14px var(--gut);
+  background:linear-gradient(180deg,rgba(10,10,11,.92),rgba(10,10,11,0));
+  opacity:0;pointer-events:none;transition:opacity .5s var(--t);
+}
+.bar.on{opacity:1;pointer-events:auto}
+.bar__logo{height:26px;flex:0 0 auto}
+.bar__nav{
+  display:flex;gap:18px;overflow-x:auto;scrollbar-width:none;margin-left:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.bar__nav::-webkit-scrollbar{display:none}
+.bar__nav a{
+  white-space:nowrap;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);padding:6px 0;border-bottom:1px solid transparent;transition:.25s var(--t);
+}
+.bar__nav a:hover,.bar__nav a.cur{color:var(--paper);border-color:var(--red)}
+.bar__cta{
+  flex:0 0 auto;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--line);border-radius:100px;padding:8px 16px;transition:.25s var(--t);
+}
+.bar__cta:hover{border-color:var(--red);color:#fff}
+
+/* ---------- hero ---------- */
+.track{height:300vh;position:relative}
+.hero{
+  position:sticky;top:0;height:100svh;overflow:hidden;
+  display:grid;place-items:center;
+}
+.hero__bg{position:absolute;inset:0;overflow:hidden;background:#0a0a0b}
+.hero__bg iframe{
+  position:absolute;top:50%;left:50%;
+  width:100vw;height:56.25vw;min-height:100svh;min-width:177.78vh;
+  transform:translate(-50%,-50%) scale(calc(1.06 + var(--p,0)*.12));
+  border:0;pointer-events:none;filter:saturate(.65);
+}
+.hero__veil{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(120% 90% at 50% 45%,rgba(10,10,11,.25),rgba(10,10,11,.86) 70%),
+    linear-gradient(180deg,rgba(10,10,11,.75),rgba(10,10,11,.2) 35%,rgba(10,10,11,.96));
+}
+.hero__in{
+  position:relative;text-align:center;padding:0 var(--gut);width:100%;
+  transform:translateY(calc(var(--p,0)*-6vh)) scale(calc(1 - var(--p,0)*.08));
+  opacity:calc(1 - max(0, (var(--p,0) - .68)) * 3.1);
+}
+.hero__logo{
+  width:min(78vw,860px);margin:0 auto;
+  -webkit-clip-path:inset(0 100% 0 0);clip-path:inset(0 100% 0 0);
+  animation:draw 2s cubic-bezier(.33,.9,.3,1) .25s forwards;
+}
+@keyframes draw{to{-webkit-clip-path:inset(0 0 0 0);clip-path:inset(0 0 0 0)}}
+.hero__base{
+  margin:clamp(18px,3vh,34px) auto 0;max-width:40ch;
+  font-size:clamp(13px,1.5vw,17px);font-weight:300;color:#cfcfd4;line-height:1.6;
+  opacity:0;transform:translateY(14px);
+  animation:rise .9s var(--t) 1.85s forwards;
+}
+@keyframes rise{to{opacity:1;transform:none}}
+.hero__meta{
+  margin-top:clamp(14px,2.4vh,26px);
+  opacity:0;animation:rise .9s var(--t) 2.15s forwards;
+}
+.scrollcue{
+  position:absolute;left:50%;bottom:26px;translate:-50% 0;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  opacity:calc(1 - var(--p,0)*4);
+}
+.scrollcue span{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.scrollcue i{display:block;width:1px;height:38px;background:linear-gradient(180deg,var(--red),transparent)}
+
+/* ---------- statement ---------- */
+.statement{padding-top:clamp(80px,16vh,190px);padding-bottom:clamp(60px,10vh,120px)}
+.statement p{
+  margin:0;max-width:22ch;font-size:clamp(28px,5.2vw,68px);line-height:1.08;
+  font-weight:300;letter-spacing:-.025em;
+}
+.statement p b{font-weight:500;color:#fff}
+.statement .sub{
+  margin-top:28px;max-width:52ch;font-size:clamp(14px,1.5vw,17px);
+  color:var(--muted);line-height:1.7;font-weight:300;
+}
+.thread{height:1px;background:var(--line);margin:clamp(50px,9vh,110px) 0 0;position:relative;overflow:hidden}
+.thread i{position:absolute;inset:0 auto 0 0;width:var(--grow,0%);background:var(--red)}
+
+/* ---------- categories ---------- */
+.cat{padding:clamp(56px,9vh,110px) 0;border-top:1px solid var(--line)}
+.cat:first-of-type{border-top:0}
+.cat__head{display:flex;align-items:flex-end;gap:clamp(16px,3vw,48px);flex-wrap:wrap;margin-bottom:clamp(24px,4vh,46px)}
+.cat__num{
+  font-size:12px;letter-spacing:.18em;color:var(--red);font-weight:500;
+  padding-bottom:10px;
+}
+.cat__ttl{
+  margin:0;font-size:clamp(26px,4.4vw,56px);line-height:1;letter-spacing:-.03em;font-weight:400;
+}
+.cat__note{margin:0 0 0 auto;max-width:34ch;font-size:13px;color:var(--muted);line-height:1.65;font-weight:300;padding-bottom:6px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:clamp(18px,3vh,30px)}
+.tabs button{
+  font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--line);border-radius:100px;padding:7px 15px;transition:.25s var(--t);
+}
+.tabs button:hover{color:var(--paper)}
+.tabs button.cur{color:#fff;border-color:var(--red);background:rgba(206,43,55,.12)}
+
+.grid{
+  display:grid;gap:clamp(12px,1.6vw,22px);
+  grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));
+}
+.card{
+  position:relative;text-align:left;width:100%;
+  opacity:0;transform:translateY(26px);
+  transition:opacity .7s var(--t),transform .7s var(--t);
+}
+.cat.in .card{opacity:1;transform:none}
+.card__ph{
+  position:relative;aspect-ratio:16/9;border-radius:3px;overflow:hidden;
+  background:#15151a;border:1px solid var(--line);
+}
+.card__ph img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s var(--t),transform .9s var(--t)}
+.card__ph img.ok{opacity:.92}
+.card:hover .card__ph img{opacity:1;transform:scale(1.04)}
+.card__play{
+  position:absolute;inset:0;display:grid;place-items:center;
+  opacity:0;transition:opacity .3s var(--t);
+  background:linear-gradient(180deg,rgba(10,10,11,.1),rgba(10,10,11,.55));
+}
+.card:hover .card__play{opacity:1}
+.card__play i{
+  width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.7);
+  display:grid;place-items:center;
+}
+.card__play i::after{
+  content:"";border-left:9px solid #fff;border-top:6px solid transparent;
+  border-bottom:6px solid transparent;margin-left:3px;
+}
+.card__t{margin:12px 0 0;font-size:14px;font-weight:400;line-height:1.35;letter-spacing:-.01em}
+.card__m{margin:5px 0 0;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.empty{
+  border:1px dashed var(--line);border-radius:3px;padding:30px;
+  font-size:13px;color:var(--muted);font-weight:300;grid-column:1/-1;
+}
+
+/* ---------- footer ---------- */
+.foot{border-top:1px solid var(--line);padding-top:clamp(56px,10vh,120px);padding-bottom:48px;margin-top:40px}
+.foot__grid{display:flex;gap:clamp(24px,5vw,80px);flex-wrap:wrap;align-items:flex-start}
+.foot h2{margin:0;font-size:clamp(24px,3.6vw,44px);font-weight:300;letter-spacing:-.03em;max-width:16ch;line-height:1.1}
+.foot__c{margin-left:auto;display:flex;flex-direction:column;gap:10px;font-size:14px;font-weight:300}
+.foot__c a:hover{color:var(--red)}
+.foot__logo{height:34px;margin-top:56px;opacity:.5}
+.foot__legal{margin-top:22px;font-size:11px;color:#5c5c63;letter-spacing:.05em}
+
+/* ---------- lightbox ---------- */
+.lb{
+  position:fixed;inset:0;z-index:90;background:rgba(6,6,7,.96);
+  display:none;place-items:center;padding:clamp(12px,4vw,56px);
+}
+.lb.on{display:grid}
+.lb__box{width:min(100%,1500px);aspect-ratio:16/9;position:relative}
+.lb__box iframe{width:100%;height:100%;border:0;border-radius:3px;background:#000}
+.lb__x{position:absolute;top:-42px;right:0;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.lb__x:hover{color:#fff}
+.lb__cap{position:absolute;top:-40px;left:0;font-size:13px;color:#cfcfd4;font-weight:300}
+@media(max-width:700px){
+  .lb__x{top:auto;bottom:-40px}
+  .lb__cap{top:auto;bottom:-38px;display:none}
+  .cat__note{margin-left:0}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .card{opacity:1;transform:none}
+  .hero__logo{-webkit-clip-path:none;clip-path:none;animation:none}
+  .hero__base,.hero__meta{opacity:1;animation:none;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="bar" id="bar">
+  <img class="bar__logo" src="logo-fil-rouge-blanc.svg" alt="Fil Rouge">
+  <nav class="bar__nav" id="nav"></nav>
+  <a class="bar__cta" id="cta" href="#contact">Contact</a>
+</header>
+
+<div class="track" id="track">
+  <section class="hero" id="hero">
+    <div class="hero__bg"><div id="reel"></div></div>
+    <div class="hero__veil"></div>
+    <div class="hero__in">
+      <img class="hero__logo" id="heroLogo" src="logo-fil-rouge-blanc.svg" alt="Fil Rouge">
+      <p class="hero__base" id="heroBase"></p>
+      <div class="hero__meta"><span class="eyebrow">Lille · Paris · Bruxelles</span></div>
+    </div>
+    <div class="scrollcue"><span>Défiler</span><i></i></div>
+  </section>
+</div>
+
+<main>
+  <section class="statement wrap">
+    <p><b>Un fil</b> qui relie l'idée, l'image et le son.</p>
+    <p class="sub" id="intro"></p>
+    <div class="thread"><i id="grow"></i></div>
+  </section>
+
+  <div class="wrap" id="cats"></div>
+
+  <footer class="foot wrap" id="contact">
+    <div class="foot__grid">
+      <h2>Vous avez une histoire. On a le fil.</h2>
+      <div class="foot__c" id="contactBox"></div>
+    </div>
+    <img class="foot__logo" src="logo-fil-rouge-rouge.svg" alt="">
+    <div class="foot__legal">© <span id="yr"></span> Fil Rouge — Tous droits réservés.</div>
+  </footer>
+</main>
+
+<div class="lb" id="lb">
+  <div class="lb__box">
+    <div class="lb__cap" id="lbCap"></div>
+    <button class="lb__x" id="lbX">Fermer ✕</button>
+    <div id="lbPlayer"></div>
+  </div>
+</div>
+
+<script id="seed" type="application/json">{
+  "site": {
+    "name": "Fil Rouge",
+    "baseline": "Toutes les émotions me poussent à écrire votre histoire",
+    "intro": "Société de production. Films de marque, contenus sociaux, création sonore. Lille · Paris · Bruxelles.",
+    "showreel": "532600097",
+    "contact": {
+      "email": "pynthejeremy@gmail.com",
+      "tel": "+33 6 12 52 06 43",
+      "vimeo": "https://vimeo.com/magencylacreative",
+      "rdv": ""
+    }
+  },
+  "categories": [
+    {
+      "id": "agence-360",
+      "title": "Accompagnement agence 360",
+      "note": "Marques accompagnées dans la durée : stratégie, production, déclinaisons.",
+      "sub": [
+        {
+          "id": "agence-360-films",
+          "title": "",
+          "films": [
+            { "t": "Pharmabest — Eaux florales", "v": "440701692", "c": "Pharmabest", "y": "2020" },
+            { "t": "Variation Design — Master", "v": "464252762", "c": "Variation Design", "y": "2020" },
+            { "t": "Variation Design", "v": "360219474", "c": "Variation Design", "y": "2019" },
+            { "t": "Variation Design — Formica", "v": "749519165", "c": "Variation Design", "y": "2022" },
+            { "t": "Molinel — We are", "v": "950794234", "c": "Molinel", "y": "2024" },
+            { "t": "Molinel — Compilation", "v": "711963382", "c": "Molinel", "y": "2022" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "social-content",
+      "title": "Social content",
+      "note": "Formats verticaux pensés pour le feed : campagne, produit, influence.",
+      "sub": [
+        {
+          "id": "reel-campagne",
+          "title": "Reel campagne",
+          "films": [
+            { "t": "Jacadi — Robes estivales", "v": "834314344", "c": "Jacadi", "y": "2023" },
+            { "t": "Jacadi — Sable d'or", "v": "830247501", "c": "Jacadi", "y": "2023" },
+            { "t": "Jacadi — Sable d'or II", "v": "821952015", "c": "Jacadi", "y": "2023" },
+            { "t": "Degrenne — Noël mood", "v": "769347348", "c": "Degrenne", "y": "2022" }
+          ]
+        },
+        {
+          "id": "reel-produit",
+          "title": "Reel produit",
+          "films": [
+            { "t": "Cristel — Produit argumenté", "v": "779069820", "c": "Cristel", "y": "2023" },
+            { "t": "Packshot carré — Série 1", "v": "868343052", "c": "Adeo", "y": "2023" },
+            { "t": "Packshot carré — Série 2", "v": "868342390", "c": "Adeo", "y": "2023" },
+            { "t": "Packshot carré — Série 3", "v": "868342225", "c": "Adeo", "y": "2023" },
+            { "t": "Hubi — Spot produit", "v": "787858766", "c": "Adeo", "y": "2023" },
+            { "t": "Vidéo produit", "v": "718761971", "c": "Adeo", "y": "2022" }
+          ]
+        },
+        {
+          "id": "influence",
+          "title": "Influence",
+          "films": [
+            { "t": "Chef, oui chef ! — Cristel", "v": "359240758", "c": "Cristel", "y": "2019" },
+            { "t": "Degrenne Supernature — Mood", "v": "779069735", "c": "Degrenne", "y": "2023" },
+            { "t": "Degrenne Supernature — Backstage", "v": "779069720", "c": "Degrenne", "y": "2023" },
+            { "t": "Degrenne Supernature — Table (9:16)", "v": "779069700", "c": "Degrenne", "y": "2023" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tv-web-ads",
+      "title": "TV & web ads",
+      "note": "Spots diffusés, de la TV au préroll.",
+      "sub": [
+        {
+          "id": "tv-web-ads-films",
+          "title": "",
+          "films": [
+            { "t": "Café Méo — Spot TV", "v": "420248926", "c": "Méo", "y": "2020" },
+            { "t": "Promod — Manteau Gisèle", "v": "468483439", "c": "Promod", "y": "2020" },
+            { "t": "LOSC — Fourth 24", "v": "1016056277", "c": "LOSC", "y": "2024" },
+            { "t": "Cristel Biome — Film pub", "v": "509701195", "c": "Cristel", "y": "2021" },
+            { "t": "Kalenji — Lancement doudoune", "v": "425449717", "c": "Kalenji", "y": "2020" },
+            { "t": "Kalenji", "v": "362573785", "c": "Kalenji", "y": "2019" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "film-corporate",
+      "title": "Film corporate",
+      "note": "Dire ce que fait une entreprise, et pourquoi ça compte.",
+      "sub": [
+        {
+          "id": "corporate-films",
+          "title": "Films",
+          "films": [
+            { "t": "Lebon — Teaser", "v": "803392635", "c": "Lebon", "y": "2023" },
+            { "t": "Lebon Protection — Film", "v": "604783374", "c": "Lebon", "y": "2021" },
+            { "t": "Cristel — Mutine 2", "v": "728817918", "c": "Cristel", "y": "2022" },
+            { "t": "Molinel — BTP", "v": "346364117", "c": "Molinel", "y": "2019" },
+            { "t": "Molinel — Join the wave", "v": "709424363", "c": "Molinel", "y": "2022" },
+            { "t": "Molinel — Survival", "v": "709426570", "c": "Molinel", "y": "2022" }
+          ]
+        },
+        {
+          "id": "testimoniaux",
+          "title": "Testimoniaux",
+          "films": [
+            { "t": "Domyos Kids — Anvers", "v": "577081368", "c": "Decathlon", "y": "2021" },
+            { "t": "Cristel — Interview", "v": "367764474", "c": "Cristel", "y": "2019" },
+            { "t": "Alexandre Turpault — Interview", "v": "359575499", "c": "Alexandre Turpault", "y": "2019" },
+            { "t": "Cristel — BFM TV", "v": "871388334", "c": "Cristel", "y": "2023" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "brand-movie",
+      "title": "Brand movie",
+      "note": "Le film qui installe un territoire de marque.",
+      "sub": [
+        {
+          "id": "brand-movie-films",
+          "title": "",
+          "films": [
+            { "t": "LOSC — Film de marque", "v": "601847075", "c": "LOSC", "y": "2021" },
+            { "t": "Scotland II — Izac", "v": "352064109", "c": "Izac", "y": "2019" },
+            { "t": "Scotland — Izac", "v": "340857972", "c": "Izac", "y": "2019" },
+            { "t": "Promod — On the road with", "v": "333300675", "c": "Promod", "y": "2019" },
+            { "t": "Promod — Pré-collection", "v": "312478390", "c": "Promod", "y": "2019" },
+            { "t": "Lanzarote", "v": "345701362", "c": "Izac", "y": "2019" },
+            { "t": "Turpault 2024", "v": "896117317", "c": "Alexandre Turpault", "y": "2024" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "film-campagne",
+      "title": "Film campagne",
+      "note": "Collections, saisons, lancements.",
+      "sub": [
+        {
+          "id": "film-campagne-films",
+          "title": "",
+          "films": [
+            { "t": "Promod — Denim", "v": "356376458", "c": "Promod", "y": "2019" },
+            { "t": "Promod x Pantone", "v": "667730314", "c": "Promod", "y": "2022" },
+            { "t": "Promod Jura — Cool chic wild", "v": "483490292", "c": "Promod", "y": "2020" },
+            { "t": "L'Impertinente — Issi", "v": "345415226", "c": "Issi", "y": "2019" },
+            { "t": "Phildar — Été 2019", "v": "314524238", "c": "Phildar", "y": "2019" },
+            { "t": "Jef Chaussures", "v": "356690085", "c": "Jef Chaussures", "y": "2019" },
+            { "t": "Jef Chaussures — Kids", "v": "356658504", "c": "Jef Chaussures", "y": "2019" },
+            { "t": "Olena", "v": "359553543", "c": "Olena", "y": "2019" },
+            { "t": "Brice — Fête des pères", "v": "337295380", "c": "Brice", "y": "2019" },
+            { "t": "Brice — Partageons l'essentiel", "v": "311249604", "c": "Brice", "y": "2019" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "film-produit",
+      "title": "Film produit",
+      "note": "L'objet, sa matière, son geste.",
+      "sub": [
+        {
+          "id": "film-produit-films",
+          "title": "",
+          "films": [
+            { "t": "Cristel — Grill", "v": "717532100", "c": "Cristel", "y": "2022" },
+            { "t": "Degrenne — Illusions", "v": "341799633", "c": "Degrenne", "y": "2019" },
+            { "t": "Arty Creation by Degrenne", "v": "408038025", "c": "Degrenne", "y": "2020" },
+            { "t": "Empileo — Cafeterie", "v": "689689760", "c": "Empileo", "y": "2022" },
+            { "t": "Jaune de Chrome", "v": "839644572", "c": "Jaune de Chrome", "y": "2023" },
+            { "t": "Molinel Workwear — Pulse", "v": "846243434", "c": "Molinel", "y": "2023" },
+            { "t": "Molinel Workwear — Famous Force", "v": "846238757", "c": "Molinel", "y": "2023" },
+            { "t": "Molinel Workwear — HV Air Flex", "v": "845961887", "c": "Molinel", "y": "2023" },
+            { "t": "Molinel Cuisine — Mix", "v": "791080989", "c": "Molinel", "y": "2023" },
+            { "t": "Molinel Cuisine — Breaking codes", "v": "791078515", "c": "Molinel", "y": "2023" },
+            { "t": "Molinel Cuisine — Métiers de bouche", "v": "790715929", "c": "Molinel", "y": "2023" },
+            { "t": "Adeo Hydro Cuisine — Icône", "v": "785915272", "c": "Adeo", "y": "2023" },
+            { "t": "Adeo Hydro Cuisine — Fanny", "v": "785915327", "c": "Adeo", "y": "2023" },
+            { "t": "Adeo — Carrelage", "v": "664260348", "c": "Adeo", "y": "2022" },
+            { "t": "Izac — Studio", "v": "341745819", "c": "Izac", "y": "2019" },
+            { "t": "Brice — Compo", "v": "337266463", "c": "Brice", "y": "2019" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "motion-design",
+      "title": "Motion design",
+      "note": "Expliquer, animer, simplifier.",
+      "sub": [
+        {
+          "id": "motion-design-films",
+          "title": "",
+          "films": [
+            { "t": "Terre & Eaux — Recyclage", "v": "485869207", "c": "Terre & Eaux", "y": "2020" },
+            { "t": "Terre & Eaux — Mise à conformité", "v": "485869517", "c": "Terre & Eaux", "y": "2020" },
+            { "t": "Qu'est-ce qu'un cylindre débrayable ?", "v": "472956554", "c": "Industrie", "y": "2020" },
+            { "t": "Vœux 2022", "v": "670277382", "c": "Agence", "y": "2022" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vfx",
+      "title": "VFX",
+      "note": "Incrustation, habillage, compositing.",
+      "sub": [
+        {
+          "id": "vfx-films",
+          "title": "",
+          "films": [
+            { "t": "LOSC — Présentation joueur (Timothy Weah)", "v": "609764755", "c": "LOSC", "y": "2021" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "live-vog",
+      "title": "Live & VOG",
+      "note": "Captation multicam, régie, direct.",
+      "sub": [
+        { "id": "live-vog-films", "title": "", "films": [] }
+      ]
+    },
+    {
+      "id": "creation-sonore",
+      "title": "Création sonore",
+      "note": "La voix, la musique, le son qui porte le film.",
+      "sub": [
+        { "id": "voix-off", "title": "Voix off", "films": [] },
+        { "id": "radio-ads", "title": "Radio ads", "films": [] },
+        { "id": "podcast", "title": "Podcast", "films": [] }
+      ]
+    }
+  ]
+}</script>
+<script>
+(function(){
+  "use strict";
+  var DATA=null, LS="filrouge.data.v1", TH="filrouge.thumb.";
+
+  function seed(){
+    try{ return JSON.parse(document.getElementById("seed").textContent); }catch(e){ return null; }
+  }
+  function load(){
+    var over=null;
+    try{ var raw=localStorage.getItem(LS); if(raw) over=JSON.parse(raw); }catch(e){}
+    if(over && over.categories){ boot(over); return; }
+    fetch("data.json",{cache:"no-store"})
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(boot)
+      .catch(function(){ boot(seed()); });
+  }
+
+  /* ---------- rendu ---------- */
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+  function vid(v){ var m=String(v||"").match(/(\d{6,})/); return m?m[1]:""; }
+
+  function boot(d){
+    if(!d){ return; }
+    DATA=d;
+    var s=d.site||{};
+    document.getElementById("heroBase").textContent=s.baseline||"";
+    document.getElementById("intro").textContent=s.intro||"";
+    document.getElementById("yr").textContent=new Date().getFullYear();
+    if(s.name) document.title=s.name+" — Société de production";
+
+    var rid=vid(s.showreel);
+    if(rid){
+      document.getElementById("reel").innerHTML='<iframe src="https://player.vimeo.com/video/'+rid+
+        '?background=1&autoplay=1&loop=1&muted=1&autopause=0&dnt=1" allow="autoplay" tabindex="-1" title="Showreel"></iframe>';
+    }
+
+    var c=s.contact||{}, box=document.getElementById("contactBox"), h="";
+    if(c.email) h+='<a href="mailto:'+esc(c.email)+'">'+esc(c.email)+'</a>';
+    if(c.tel)   h+='<a href="tel:'+esc(String(c.tel).replace(/\s/g,""))+'">'+esc(c.tel)+'</a>';
+    if(c.vimeo) h+='<a href="'+esc(c.vimeo)+'" target="_blank" rel="noopener">Vimeo</a>';
+    if(c.rdv)   h+='<a href="'+esc(c.rdv)+'" target="_blank" rel="noopener">Prendre rendez-vous</a>';
+    box.innerHTML=h;
+    if(c.rdv) document.getElementById("cta").setAttribute("href",c.rdv);
+
+    renderCats(d.categories||[]);
+    observe();
+  }
+
+  function renderCats(cats){
+    var root=document.getElementById("cats"), nav=document.getElementById("nav");
+    var html="", navHtml="";
+    cats.forEach(function(cat,i){
+      var subs=(cat.sub||[]).filter(Boolean);
+      var named=subs.filter(function(s){ return s.title; });
+      var n=("0"+(i+1)).slice(-2);
+      navHtml+='<a href="#'+esc(cat.id)+'">'+esc(cat.title)+"</a>";
+      html+='<section class="cat" id="'+esc(cat.id)+'" data-cat="'+i+'">'+
+        '<div class="cat__head">'+
+          '<div class="cat__num">'+n+'</div>'+
+          '<h2 class="cat__ttl">'+esc(cat.title)+"</h2>"+
+          (cat.note?'<p class="cat__note">'+esc(cat.note)+"</p>":"")+
+        "</div>";
+      if(named.length>1){
+        html+='<div class="tabs" data-tabs="'+i+'">';
+        html+='<button class="cur" data-sub="all">Tout</button>';
+        named.forEach(function(s,j){ html+='<button data-sub="'+j+'">'+esc(s.title)+"</button>"; });
+        html+="</div>";
+      }
+      html+='<div class="grid" data-grid="'+i+'">'+cards(subs,"all")+"</div></section>";
+    });
+    root.innerHTML=html; nav.innerHTML=navHtml;
+
+    root.addEventListener("click",function(e){
+      var b=e.target.closest("[data-sub]");
+      if(b){
+        var box=b.parentNode, i=box.getAttribute("data-tabs");
+        [].forEach.call(box.children,function(x){ x.classList.remove("cur"); });
+        b.classList.add("cur");
+        var subs=(DATA.categories[i].sub||[]).filter(Boolean);
+        var grid=root.querySelector('[data-grid="'+i+'"]');
+        grid.innerHTML=cards(subs,b.getAttribute("data-sub"),true);
+        thumbs(grid);
+        return;
+      }
+      var card=e.target.closest(".card");
+      if(card) open(card.getAttribute("data-v"),card.getAttribute("data-t"));
+    });
+    thumbs(root);
+  }
+
+  function cards(subs,which,flat){
+    var list=[];
+    subs.forEach(function(s,j){
+      if(which!=="all"){
+        var named=subs.filter(function(x){ return x.title; });
+        if(named[which]!==s) return;
+      }
+      (s.films||[]).forEach(function(f){ list.push(f); });
+    });
+    if(!list.length) return '<div class="empty">Films en cours d\'ajout — cette rubrique se remplit depuis le back-office.</div>';
+    return list.map(function(f){
+      var id=vid(f.v);
+      return '<button class="card" data-v="'+id+'" data-t="'+esc(f.t)+'">'+
+        '<div class="card__ph"><img alt="" loading="lazy" data-id="'+id+'">'+
+        '<div class="card__play"><i></i></div></div>'+
+        '<p class="card__t">'+esc(f.t)+"</p>"+
+        '<p class="card__m">'+esc([f.c,f.y].filter(Boolean).join(" · "))+"</p>"+
+      "</button>";
+    }).join("");
+  }
+
+  /* ---------- vignettes Vimeo (oEmbed public) ---------- */
+  var tObs=null;
+  function thumbs(scope){
+    if(!("IntersectionObserver" in window)){ return; }
+    if(!tObs) tObs=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ tObs.unobserve(e.target); fill(e.target); } });
+    },{rootMargin:"300px"});
+    [].forEach.call(scope.querySelectorAll("img[data-id]"),function(img){ tObs.observe(img); });
+  }
+  function fill(img){
+    var id=img.getAttribute("data-id"); if(!id) return;
+    var k=TH+id, cached=null;
+    try{ cached=localStorage.getItem(k); }catch(e){}
+    if(cached){ img.src=cached; img.classList.add("ok"); return; }
+    fetch("https://vimeo.com/api/oembed.json?width=960&url=https%3A//vimeo.com/"+id)
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        if(!j || !j.thumbnail_url) return;
+        img.src=j.thumbnail_url; img.classList.add("ok");
+        try{ localStorage.setItem(k,j.thumbnail_url); }catch(e){}
+      }).catch(function(){});
+  }
+
+  /* ---------- lecteur ---------- */
+  var lb=document.getElementById("lb"), lbP=document.getElementById("lbPlayer"), lbC=document.getElementById("lbCap");
+  function open(id,t){
+    if(!id) return;
+    lbC.textContent=t||"";
+    lbP.innerHTML='<iframe src="https://player.vimeo.com/video/'+id+
+      '?autoplay=1&title=0&byline=0&portrait=0&dnt=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="'+
+      (t||"Film").replace(/"/g,"")+'"></iframe>';
+    lb.classList.add("on"); document.body.style.overflow="hidden";
+  }
+  function close(){ lb.classList.remove("on"); lbP.innerHTML=""; document.body.style.overflow=""; }
+  document.getElementById("lbX").addEventListener("click",close);
+  lb.addEventListener("click",function(e){ if(e.target===lb) close(); });
+  addEventListener("keydown",function(e){ if(e.key==="Escape") close(); });
+
+  /* ---------- scroll ---------- */
+  var track=document.getElementById("track"), hero=document.getElementById("hero"),
+      bar=document.getElementById("bar"), grow=document.getElementById("grow"), tick=false;
+  function frame(){
+    tick=false;
+    var h=track.offsetHeight-innerHeight;
+    var p=h>0?Math.min(1,Math.max(0,scrollY/h)):1;
+    var st=hero.style;
+    st.setProperty("--p",p.toFixed(4));
+    bar.classList.toggle("on",scrollY>innerHeight*0.9);
+    var tr=grow.parentNode.getBoundingClientRect();
+    if(tr.top<innerHeight) grow.style.setProperty("--grow",Math.min(100,(innerHeight-tr.top)/4)+"%");
+    var cur=null;
+    [].forEach.call(document.querySelectorAll(".cat"),function(s){
+      if(s.getBoundingClientRect().top<innerHeight*0.45) cur=s.id;
+    });
+    [].forEach.call(document.querySelectorAll("#nav a"),function(a){
+      a.classList.toggle("cur",a.getAttribute("href")==="#"+cur);
+    });
+  }
+  addEventListener("scroll",function(){ if(!tick){ tick=true; requestAnimationFrame(frame); } },{passive:true});
+  addEventListener("resize",frame);
+
+  function observe(){
+    if(!("IntersectionObserver" in window)){
+      [].forEach.call(document.querySelectorAll(".cat"),function(s){ s.classList.add("in"); });
+      frame(); return;
+    }
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add("in");
+          [].forEach.call(e.target.querySelectorAll(".card"),function(c,i){
+            c.style.transitionDelay=Math.min(i*45,420)+"ms";
+          });
+          io.unobserve(e.target);
+        }
+      });
+    },{rootMargin:"-8% 0px -12%"});
+    [].forEach.call(document.querySelectorAll(".cat"),function(s){ io.observe(s); });
+    frame();
+  }
+
+  load();
+})();
+</script>
+</body>
+</html>

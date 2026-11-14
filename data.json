@@ -1,0 +1,243 @@
+{
+  "site": {
+    "name": "Fil Rouge",
+    "baseline": "Toutes les émotions me poussent à écrire votre histoire",
+    "intro": "Société de production. Films de marque, contenus sociaux, création sonore. Lille · Paris · Bruxelles.",
+    "showreel": "532600097",
+    "contact": {
+      "email": "pynthejeremy@gmail.com",
+      "tel": "+33 6 12 52 06 43",
+      "vimeo": "https://vimeo.com/magencylacreative",
+      "rdv": ""
+    }
+  },
+  "categories": [
+    {
+      "id": "agence-360",
+      "title": "Accompagnement agence 360",
+      "note": "Marques accompagnées dans la durée : stratégie, production, déclinaisons.",
+      "sub": [
+        {
+          "id": "agence-360-films",
+          "title": "",
+          "films": [
+            { "t": "Pharmabest — Eaux florales", "v": "440701692", "c": "Pharmabest", "y": "2020" },
+            { "t": "Variation Design — Master", "v": "464252762", "c": "Variation Design", "y": "2020" },
+            { "t": "Variation Design", "v": "360219474", "c": "Variation Design", "y": "2019" },
+            { "t": "Variation Design — Formica", "v": "749519165", "c": "Variation Design", "y": "2022" },
+            { "t": "Molinel — We are", "v": "950794234", "c": "Molinel", "y": "2024" },
+            { "t": "Molinel — Compilation", "v": "711963382", "c": "Molinel", "y": "2022" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "social-content",
+      "title": "Social content",
+      "note": "Formats verticaux pensés pour le feed : campagne, produit, influence.",
+      "sub": [
+        {
+          "id": "reel-campagne",
+          "title": "Reel campagne",
+          "films": [
+            { "t": "Jacadi — Robes estivales", "v": "834314344", "c": "Jacadi", "y": "2023" },
+            { "t": "Jacadi — Sable d'or", "v": "830247501", "c": "Jacadi", "y": "2023" },
+            { "t": "Jacadi — Sable d'or II", "v": "821952015", "c": "Jacadi", "y": "2023" },
+            { "t": "Degrenne — Noël mood", "v": "769347348", "c": "Degrenne", "y": "2022" }
+          ]
+        },
+        {
+          "id": "reel-produit",
+          "title": "Reel produit",
+          "films": [
+            { "t": "Cristel — Produit argumenté", "v": "779069820", "c": "Cristel", "y": "2023" },
+            { "t": "Packshot carré — Série 1", "v": "868343052", "c": "Adeo", "y": "2023" },
+            { "t": "Packshot carré — Série 2", "v": "868342390", "c": "Adeo", "y": "2023" },
+            { "t": "Packshot carré — Série 3", "v": "868342225", "c": "Adeo", "y": "2023" },
+            { "t": "Hubi — Spot produit", "v": "787858766", "c": "Adeo", "y": "2023" },
+            { "t": "Vidéo produit", "v": "718761971", "c": "Adeo", "y": "2022" }
+          ]
+        },
+        {
+          "id": "influence",
+          "title": "Influence",
+          "films": [
+            { "t": "Chef, oui chef ! — Cristel", "v": "359240758", "c": "Cristel", "y": "2019" },
+            { "t": "Degrenne Supernature — Mood", "v": "779069735", "c": "Degrenne", "y": "2023" },
+            { "t": "Degrenne Supernature — Backstage", "v": "779069720", "c": "Degrenne", "y": "2023" },
+            { "t": "Degrenne Supernature — Table (9:16)", "v": "779069700", "c": "Degrenne", "y": "2023" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tv-web-ads",
+      "title": "TV & web ads",
+      "note": "Spots diffusés, de la TV au préroll.",
+      "sub": [
+        {
+          "id": "tv-web-ads-films",
+          "title": "",
+          "films": [
+            { "t": "Café Méo — Spot TV", "v": "420248926", "c": "Méo", "y": "2020" },
+            { "t": "Promod — Manteau Gisèle", "v": "468483439", "c": "Promod", "y": "2020" },
+            { "t": "LOSC — Fourth 24", "v": "1016056277", "c": "LOSC", "y": "2024" },
+            { "t": "Cristel Biome — Film pub", "v": "509701195", "c": "Cristel", "y": "2021" },
+            { "t": "Kalenji — Lancement doudoune", "v": "425449717", "c": "Kalenji", "y": "2020" },
+            { "t": "Kalenji", "v": "362573785", "c": "Kalenji", "y": "2019" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "film-corporate",
+      "title": "Film corporate",
+      "note": "Dire ce que fait une entreprise, et pourquoi ça compte.",
+      "sub": [
+        {
+          "id": "corporate-films",
+          "title": "Films",
+          "films": [
+            { "t": "Lebon — Teaser", "v": "803392635", "c": "Lebon", "y": "2023" },
+            { "t": "Lebon Protection — Film", "v": "604783374", "c": "Lebon", "y": "2021" },
+            { "t": "Cristel — Mutine 2", "v": "728817918", "c": "Cristel", "y": "2022" },
+            { "t": "Molinel — BTP", "v": "346364117", "c": "Molinel", "y": "2019" },
+            { "t": "Molinel — Join the wave", "v": "709424363", "c": "Molinel", "y": "2022" },
+            { "t": "Molinel — Survival", "v": "709426570", "c": "Molinel", "y": "2022" }
+          ]
+        },
+        {
+          "id": "testimoniaux",
+          "title": "Testimoniaux",
+          "films": [
+            { "t": "Domyos Kids — Anvers", "v": "577081368", "c": "Decathlon", "y": "2021" },
+            { "t": "Cristel — Interview", "v": "367764474", "c": "Cristel", "y": "2019" },
+            { "t": "Alexandre Turpault — Interview", "v": "359575499", "c": "Alexandre Turpault", "y": "2019" },
+            { "t": "Cristel — BFM TV", "v": "871388334", "c": "Cristel", "y": "2023" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "brand-movie",
+      "title": "Brand movie",
+      "note": "Le film qui installe un territoire de marque.",
+      "sub": [
+        {
+          "id": "brand-movie-films",
+          "title": "",
+          "films": [
+            { "t": "LOSC — Film de marque", "v": "601847075", "c": "LOSC", "y": "2021" },
+            { "t": "Scotland II — Izac", "v": "352064109", "c": "Izac", "y": "2019" },
+            { "t": "Scotland — Izac", "v": "340857972", "c": "Izac", "y": "2019" },
+            { "t": "Promod — On the road with", "v": "333300675", "c": "Promod", "y": "2019" },
+            { "t": "Promod — Pré-collection", "v": "312478390", "c": "Promod", "y": "2019" },
+            { "t": "Lanzarote", "v": "345701362", "c": "Izac", "y": "2019" },
+            { "t": "Turpault 2024", "v": "896117317", "c": "Alexandre Turpault", "y": "2024" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "film-campagne",
+      "title": "Film campagne",
+      "note": "Collections, saisons, lancements.",
+      "sub": [
+        {
+          "id": "film-campagne-films",
+          "title": "",
+          "films": [
+            { "t": "Promod — Denim", "v": "356376458", "c": "Promod", "y": "2019" },
+            { "t": "Promod x Pantone", "v": "667730314", "c": "Promod", "y": "2022" },
+            { "t": "Promod Jura — Cool chic wild", "v": "483490292", "c": "Promod", "y": "2020" },
+            { "t": "L'Impertinente — Issi", "v": "345415226", "c": "Issi", "y": "2019" },
+            { "t": "Phildar — Été 2019", "v": "314524238", "c": "Phildar", "y": "2019" },
+            { "t": "Jef Chaussures", "v": "356690085", "c": "Jef Chaussures", "y": "2019" },
+            { "t": "Jef Chaussures — Kids", "v": "356658504", "c": "Jef Chaussures", "y": "2019" },
+            { "t": "Olena", "v": "359553543", "c": "Olena", "y": "2019" },
+            { "t": "Brice — Fête des pères", "v": "337295380", "c": "Brice", "y": "2019" },
+            { "t": "Brice — Partageons l'essentiel", "v": "311249604", "c": "Brice", "y": "2019" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "film-produit",
+      "title": "Film produit",
+      "note": "L'objet, sa matière, son geste.",
+      "sub": [
+        {
+          "id": "film-produit-films",
+          "title": "",
+          "films": [
+            { "t": "Cristel — Grill", "v": "717532100", "c": "Cristel", "y": "2022" },
+            { "t": "Degrenne — Illusions", "v": "341799633", "c": "Degrenne", "y": "2019" },
+            { "t": "Arty Creation by Degrenne", "v": "408038025", "c": "Degrenne", "y": "2020" },
+            { "t": "Empileo — Cafeterie", "v": "689689760", "c": "Empileo", "y": "2022" },
+            { "t": "Jaune de Chrome", "v": "839644572", "c": "Jaune de Chrome", "y": "2023" },
+            { "t": "Molinel Workwear — Pulse", "v": "846243434", "c": "Molinel", "y": "2023" },
+            { "t": "Molinel Workwear — Famous Force", "v": "846238757", "c": "Molinel", "y": "2023" },
+            { "t": "Molinel Workwear — HV Air Flex", "v": "845961887", "c": "Molinel", "y": "2023" },
+            { "t": "Molinel Cuisine — Mix", "v": "791080989", "c": "Molinel", "y": "2023" },
+            { "t": "Molinel Cuisine — Breaking codes", "v": "791078515", "c": "Molinel", "y": "2023" },
+            { "t": "Molinel Cuisine — Métiers de bouche", "v": "790715929", "c": "Molinel", "y": "2023" },
+            { "t": "Adeo Hydro Cuisine — Icône", "v": "785915272", "c": "Adeo", "y": "2023" },
+            { "t": "Adeo Hydro Cuisine — Fanny", "v": "785915327", "c": "Adeo", "y": "2023" },
+            { "t": "Adeo — Carrelage", "v": "664260348", "c": "Adeo", "y": "2022" },
+            { "t": "Izac — Studio", "v": "341745819", "c": "Izac", "y": "2019" },
+            { "t": "Brice — Compo", "v": "337266463", "c": "Brice", "y": "2019" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "motion-design",
+      "title": "Motion design",
+      "note": "Expliquer, animer, simplifier.",
+      "sub": [
+        {
+          "id": "motion-design-films",
+          "title": "",
+          "films": [
+            { "t": "Terre & Eaux — Recyclage", "v": "485869207", "c": "Terre & Eaux", "y": "2020" },
+            { "t": "Terre & Eaux — Mise à conformité", "v": "485869517", "c": "Terre & Eaux", "y": "2020" },
+            { "t": "Qu'est-ce qu'un cylindre débrayable ?", "v": "472956554", "c": "Industrie", "y": "2020" },
+            { "t": "Vœux 2022", "v": "670277382", "c": "Agence", "y": "2022" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vfx",
+      "title": "VFX",
+      "note": "Incrustation, habillage, compositing.",
+      "sub": [
+        {
+          "id": "vfx-films",
+          "title": "",
+          "films": [
+            { "t": "LOSC — Présentation joueur (Timothy Weah)", "v": "609764755", "c": "LOSC", "y": "2021" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "live-vog",
+      "title": "Live & VOG",
+      "note": "Captation multicam, régie, direct.",
+      "sub": [
+        { "id": "live-vog-films", "title": "", "films": [] }
+      ]
+    },
+    {
+      "id": "creation-sonore",
+      "title": "Création sonore",
+      "note": "La voix, la musique, le son qui porte le film.",
+      "sub": [
+        { "id": "voix-off", "title": "Voix off", "films": [] },
+        { "id": "radio-ads", "title": "Radio ads", "films": [] },
+        { "id": "podcast", "title": "Podcast", "films": [] }
+      ]
+    }
+  ]
+}

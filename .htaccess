@@ -1,0 +1,13 @@
+# Protection du back-office (Apache). Générez .htpasswd depuis le panel de votre hébergeur,
+# puis corrigez le chemin absolu ci-dessous.
+<Files "admin.html">
+  AuthType Basic
+  AuthName "Fil Rouge - back-office"
+  AuthUserFile /chemin/absolu/vers/.htpasswd
+  Require valid-user
+</Files>
+
+# Le contenu ne doit jamais etre servi depuis un cache perime
+<Files "data.json">
+  Header set Cache-Control "no-cache, must-revalidate"
+</Files>
